@@ -6,7 +6,25 @@ import globals from "globals";
 
 export default [
     {
-        ignores: ["dist/**", ".astro/**", "node_modules/**"],
+        ignores: [
+            "node_modules/**",
+            "dist/**",
+            ".astro/**",
+            "src/data/resume-rendered.json",
+            "public/resume-standalone.html",
+            ".env",
+            ".env.*",
+            ".vscode/*",
+            "!.vscode/settings.json",
+            "!.vscode/extensions.json",
+            ".DS_Store",
+            "Thumbs.db",
+            "*.log",
+            "npm-debug.log*",
+            "pnpm-debug.log*",
+            ".keystatic",
+            ".vercel",
+        ],
     },
     eslint.configs.recommended,
     ...tseslint.configs.recommended,
