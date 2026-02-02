@@ -27,10 +27,10 @@ const { Content } = await post.render();
         <header class="mb-8">
             <h1 class="text-4xl font-bold mb-2">{post.data.title}</h1>
             {post.data.description && (
-                <p class="text-lg text-[var(--color-muted)]">{post.data.description}</p>
+                <p class="text-lg text-(--color-muted)">{post.data.description}</p>
             )}
             <time
-                class="text-sm text-[var(--color-muted)] block mt-2"
+                class="text-sm text-(--color-muted) block mt-2"
                 datetime={post.data.pubDate.toISOString()}
             >
                 {post.data.pubDate.toLocaleDateString("ko-KR")}

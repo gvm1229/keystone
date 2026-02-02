@@ -9,10 +9,10 @@
 import ThemeToggle from "./ThemeToggle";
 ---
 
-<header class="sticky top-0 z-50 border-b border-[var(--color-border)] bg-[var(--color-surface)] backdrop-blur-sm">
+<header class="sticky top-0 z-50 border-b border-(--color-border) bg-(--color-surface) backdrop-blur-sm">
     <nav class="container mx-auto px-4 py-4 flex items-center justify-between gap-4">
         {/* 사이트 타이틀 */}
-        <a href="/" class="text-xl font-bold text-[var(--color-foreground)] hover:opacity-80 transition-opacity">
+        <a href="/" class="text-xl font-bold text-(--color-foreground) hover:opacity-80 transition-opacity">
             Keystone
         </a>
 
@@ -20,25 +20,25 @@ import ThemeToggle from "./ThemeToggle";
         <div class="flex items-center gap-2 sm:gap-4">
             <a
                 href="/about"
-                class="px-3 py-2 text-sm font-medium text-[var(--color-muted)] hover:text-[var(--color-foreground)] rounded-md hover:opacity-80 transition-colors"
+                class="px-3 py-2 text-sm font-medium text-(--color-muted) hover:text-(--color-foreground) rounded-md hover:opacity-80 transition-colors"
             >
                 About me
             </a>
             <a
                 href="/resume"
-                class="px-3 py-2 text-sm font-medium text-[var(--color-muted)] hover:text-[var(--color-foreground)] rounded-md hover:opacity-80 transition-colors"
+                class="px-3 py-2 text-sm font-medium text-(--color-muted) hover:text-(--color-foreground) rounded-md hover:opacity-80 transition-colors"
             >
                 Resume
             </a>
             <a
                 href="/portfolio"
-                class="px-3 py-2 text-sm font-medium text-[var(--color-muted)] hover:text-[var(--color-foreground)] rounded-md hover:opacity-80 transition-colors"
+                class="px-3 py-2 text-sm font-medium text-(--color-muted) hover:text-(--color-foreground) rounded-md hover:opacity-80 transition-colors"
             >
                 Portfolio
             </a>
             <a
                 href="/blog"
-                class="px-3 py-2 text-sm font-medium text-[var(--color-muted)] hover:text-[var(--color-foreground)] rounded-md hover:opacity-80 transition-colors"
+                class="px-3 py-2 text-sm font-medium text-(--color-muted) hover:text-(--color-foreground) rounded-md hover:opacity-80 transition-colors"
             >
                 Blog
             </a>
@@ -48,7 +48,7 @@ import ThemeToggle from "./ThemeToggle";
                 href="https://github.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="p-2 text-[var(--color-muted)] hover:text-[var(--color-foreground)] rounded-md hover:opacity-80 transition-colors"
+                class="p-2 text-(--color-muted) hover:text-(--color-foreground) rounded-md hover:opacity-80 transition-colors"
                 aria-label="GitHub"
             >
                 <svg

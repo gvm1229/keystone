@@ -31,13 +31,13 @@ const description = resumeData.basics?.summary ?? "이력서";
         </div>
     ) : (
         <div class="max-w-2xl mx-auto py-16 text-center">
-            <p class="text-[var(--color-muted)] mb-4">
+            <p class="text-(--color-muted) mb-4">
                 이력서를 렌더링하려면 다음 명령을 실행하세요:
             </p>
-            <code class="block p-4 rounded-lg bg-[var(--color-code-bg)] text-[var(--color-code-fg)] text-sm">
+            <code class="block p-4 rounded-lg bg-(--color-code-bg) text-(--color-code-fg) text-sm">
                 pnpm run resume:export
             </code>
-            <p class="text-sm text-[var(--color-muted)] mt-4">
+            <p class="text-sm text-(--color-muted) mt-4">
                 PUBLIC_RESUME_THEME 환경 변수로 테마를 선택할 수 있습니다 (예: flat, kendall, elegant).
             </p>
         </div>

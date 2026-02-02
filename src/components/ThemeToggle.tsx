@@ -65,7 +65,7 @@ export default function ThemeToggle() {
 
     if (!mounted) {
         return (
-            <div className="w-10 h-10 rounded-md bg-[var(--color-muted)]/20 animate-pulse" />
+            <div className="w-10 h-10 rounded-md bg-(--color-muted)/20 animate-pulse" />
         );
     }
 
@@ -77,7 +77,7 @@ export default function ThemeToggle() {
         >
             <button
                 type="button"
-                className="p-2 text-[var(--color-muted)] hover:text-[var(--color-foreground)] rounded-md hover:opacity-80 transition-colors"
+                className="p-2 text-(--color-muted) hover:text-(--color-foreground) rounded-md hover:opacity-80 transition-colors"
                 aria-label="테마 선택"
                 aria-haspopup="true"
                 aria-expanded={isOpen}
@@ -121,7 +121,7 @@ export default function ThemeToggle() {
                     role="menu"
                     aria-orientation="vertical"
                 >
-                    <div className="py-1 rounded-md border border-[var(--color-border)] bg-[var(--color-surface)] shadow-lg">
+                    <div className="py-1 rounded-md border border-(--color-border) bg-(--color-surface) shadow-lg">
                         {(["light", "dark", "system"] as const).map((t) => (
                             <button
                                 key={t}
@@ -129,8 +129,8 @@ export default function ThemeToggle() {
                                 role="menuitem"
                                 className={`w-full px-3 py-2 text-left text-sm flex items-center gap-2 transition-colors first:rounded-t-md last:rounded-b-md ${
                                     theme === t
-                                        ? "bg-[var(--color-accent)]/10 text-[var(--color-accent)]"
-                                        : "text-[var(--color-foreground)] hover:bg-[var(--color-muted)]/10"
+                                        ? "bg-(--color-accent)/10 text-(--color-accent)"
+                                        : "text-(--color-foreground) hover:bg-(--color-muted)/10"
                                 }`}
                                 onClick={() => handleSelect(t)}
                             >
