@@ -5,6 +5,10 @@ node_modules/
 dist/
 .astro/
 
+# Generated resume (resume:export)
+src/data/resume-rendered.json
+public/resume-standalone.html
+
 # Environment
 .env
 .env.*

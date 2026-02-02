@@ -57,10 +57,14 @@ pnpm dev
 | `pnpm git-refresh` | 스테이징 해제, 캐시 삭제 후 git add (새/변경된 .gitignore 반영) |
 | `pnpm reinstall` | node_modules 삭제 후 깨끗한 재설치 |
 | `pnpm upgrade-all` | 모든 패키지 최신 버전으로 업데이트 |
+| `pnpm resume:export` | `resume.json`을 선택한 테마로 HTML로 export (predev/prebuild에서 자동 실행) |
 
-## 포트폴리오 JSON 스키마
+## 데이터 소스
 
-`content/portfolio/portfolio.schema.json` 참조. Supabase 연동 전에는 `src/data/portfolio.json` 사용.
+| 데이터 | 경로 | 스키마 |
+|--------|------|--------|
+| 포트폴리오 | `src/data/portfolio.json` | `PORTFOLIO_SCHEMA.md` |
+| 이력서 | `src/data/resume.json` | [JSON Resume](https://docs.jsonresume.org/schema). `PUBLIC_RESUME_THEME`으로 테마 선택 (flat, kendall, elegant 등). [400+ 테마](https://jsonresume.org/themes) 중 `pnpm add jsonresume-theme-<이름>` 설치 후 사용 가능 |
 
 ## 환경 변수
 
@@ -71,3 +75,4 @@ pnpm dev
 | `PUBLIC_SUPABASE_URL` | Supabase 프로젝트 URL |
 | `PUBLIC_SUPABASE_ANON_KEY` | Supabase 익명 키 |
 | `PUBLIC_COLOR_SCHEME` | 사이트 컬러 스킴: `blue`, `gray`, `beige`, `blackwhite`. 기본값 `gray` |
+| `PUBLIC_RESUME_THEME` | JSON Resume 테마 (flat, kendall, elegant 등). 기본 설치된 테마만 사용 가능. 추가 테마는 `pnpm add jsonresume-theme-<이름>` |

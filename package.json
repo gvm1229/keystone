@@ -3,6 +3,9 @@
     "type": "module",
     "version": "0.0.1",
     "scripts": {
+        "resume:export": "node scripts/export-resume.mjs",
+        "predev": "pnpm run resume:export",
+        "prebuild": "pnpm run resume:export",
         "dev": "astro dev",
         "build": "astro build",
         "preview": "astro preview",
@@ -20,6 +23,9 @@
         "@keystatic/core": "^0.5.48",
         "@supabase/supabase-js": "^2.93.3",
         "astro": "^5.17.1",
+        "jsonresume-theme-elegant": "^1.16.1",
+        "jsonresume-theme-flat": "^0.3.7",
+        "jsonresume-theme-kendall": "^0.2.0",
         "react": "^19.2.4",
         "react-dom": "^19.2.4"
     },
@@ -34,6 +40,7 @@
         "eslint-plugin-astro": "^1.5.0",
         "globals": "^17.3.0",
         "husky": "^9.1.7",
+        "resume-cli": "^3.1.2",
         "rimraf": "^6.1.2",
         "tailwindcss": "^4.1.18",
         "typescript": "~5.9.3",

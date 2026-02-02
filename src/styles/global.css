@@ -184,3 +184,16 @@
 .prose a:hover {
     opacity: 0.85;
 }
+
+/* Resume 페이지: iframe으로 완전 격리하여 헤더/외부 레이아웃에 영향 없음 */
+.resume-page-container {
+    isolation: isolate;
+    width: 100%;
+    min-height: 800px;
+}
+.resume-iframe {
+    width: 100%;
+    min-height: 1000px;
+    border: none;
+    display: block;
+}
