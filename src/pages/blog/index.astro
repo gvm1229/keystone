@@ -18,13 +18,13 @@ const sortedPosts = [...posts].sort(
 ---
 
 <BaseLayout title="Blog - Keystone" description="기술 블로그">
-    <h1 class="text-3xl font-bold mb-6">Blog</h1>
-    <p class="text-gray-600 dark:text-gray-400 mb-8">
+    <h1 class="text-3xl font-bold mb-6 text-[var(--color-foreground)]">Blog</h1>
+    <p class="text-[var(--color-muted)] mb-8">
         Keystatic으로 관리하는 블로그 포스트입니다.
     </p>
 
     {sortedPosts.length === 0 ? (
-        <p class="text-gray-500 dark:text-gray-500">
+        <p class="text-[var(--color-muted)]">
             아직 작성된 포스트가 없습니다. 개발 서버에서 /keystatic 으로 접속해 포스트를 추가해 보세요.
         </p>
     ) : (
@@ -33,16 +33,16 @@ const sortedPosts = [...posts].sort(
                 <li>
                     <a
                         href={`/blog/${post.slug}`}
-                        class="block p-4 rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+                        class="block p-4 rounded-lg border border-[var(--color-border)] bg-[var(--color-surface-subtle)] hover:opacity-90 transition-opacity"
                     >
-                        <h2 class="font-semibold text-lg">{post.data.title}</h2>
+                        <h2 class="font-semibold text-lg text-[var(--color-foreground)]">{post.data.title}</h2>
                         {post.data.description && (
-                            <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                            <p class="text-sm text-[var(--color-muted)] mt-1">
                                 {post.data.description}
                             </p>
                         )}
                         <time
-                            class="text-xs text-gray-500 dark:text-gray-500 mt-2 block"
+                            class="text-xs text-[var(--color-muted)] mt-2 block"
                             datetime={post.data.pubDate.toISOString()}
                         >
                             {post.data.pubDate.toLocaleDateString("ko-KR")}

@@ -2,6 +2,7 @@
 /**
  * 기본 레이아웃
  * - 다크모드 스크립트
+ * - 컬러 스킴 (PUBLIC_COLOR_SCHEME: blue | gray | beige)
  * - 전역 스타일
  */
 import "../styles/global.css";
@@ -13,10 +14,14 @@ interface Props {
 }
 
 const { title = "Keystone", description = "포트폴리오 & 기술 블로그" } = Astro.props;
+
+// PUBLIC_COLOR_SCHEME env (blue | gray | beige | blackwhite), 기본 gray
+const colorScheme = (import.meta.env.PUBLIC_COLOR_SCHEME ?? "gray") as string;
+const validScheme = ["blue", "gray", "beige", "blackwhite"].includes(colorScheme) ? colorScheme : "gray";
 ---
 
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" data-color-scheme={validScheme}>
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -38,7 +43,7 @@ const { title = "Keystone", description = "포트폴리오 & 기술 블로그" }
             })();
         </script>
     </head>
-    <body class="min-h-screen bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors">
+    <body class="min-h-screen bg-[var(--color-surface)] text-[var(--color-foreground)] transition-colors">
         <Header />
         <main class="container mx-auto px-4 py-8">
             <slot />

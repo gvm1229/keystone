@@ -64,4 +64,10 @@ pnpm dev
 
 ## 환경 변수
 
-`env.example`을 `.env.local`로 복사 후 Supabase URL/키 설정.
+`env.example`을 `.env.local`로 복사 후 설정.
+
+| 변수 | 설명 |
+|------|------|
+| `PUBLIC_SUPABASE_URL` | Supabase 프로젝트 URL |
+| `PUBLIC_SUPABASE_ANON_KEY` | Supabase 익명 키 |
+| `PUBLIC_COLOR_SCHEME` | 사이트 컬러 스킴: `blue`, `gray`, `beige`, `blackwhite`. 기본값 `gray` |
