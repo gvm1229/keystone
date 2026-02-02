@@ -1,0 +1,3 @@
+#!/bin/sh
+# Husky pre-commit: 커밋 전 린트 실행
+pnpm run lint

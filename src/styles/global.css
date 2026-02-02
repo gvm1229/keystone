@@ -1,0 +1,12 @@
+/* Tailwind CSS 4 - 전역 스타일 */
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/* 다크모드: html.dark 클래스 기반 (light/dark/system 토글 지원) */
+@custom-variant dark (&&:where(.dark, .dark *));
+
+/* 커스텀 테마 색상 */
+@theme {
+    --color-keystone-primary: #6366f1;
+    --color-keystone-secondary: #8b5cf6;
+}
