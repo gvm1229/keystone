@@ -8,6 +8,10 @@ dist/
 # Generated resume (resume:export)
 src/data/resume-rendered.json
 public/resume-standalone.html
+# resume-cli expects resume.json in cwd
+resume.json
+# exception for original resume.json
+!src/data/resume.json
 
 # Environment
 .env
