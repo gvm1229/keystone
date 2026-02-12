@@ -11,35 +11,42 @@ import resumeData from "@/data/resume.json";
 /** @type {{ theme: string; styles: string; body: string } | null} */
 let rendered = null;
 try {
-    rendered = await import("../../data/resume-rendered.json").then((m) => m.default);
+    rendered = await import("../../data/resume-rendered.json").then(
+        (m) => m.default
+    );
 } catch {
     rendered = null;
 }
 
-const title = resumeData.basics?.name ? `${resumeData.basics.name} - Resume | Keystone` : "Resume - Keystone";
+const title = resumeData.basics?.name
+    ? `${resumeData.basics.name} - Resume | Keystone`
+    : "Resume - Keystone";
 const description = resumeData.basics?.summary ?? "이력서";
 ---
 
 <BaseLayout title={title} description={description}>
-    {rendered ? (
-        <div class="resume-page-container">
-            <iframe
-                src="/resume-standalone.html"
-                title="Resume"
-                class="resume-iframe"
-            />
-        </div>
-    ) : (
-        <div class="max-w-2xl mx-auto py-16 text-center">
-            <p class="text-(--color-muted) mb-4">
-                이력서를 렌더링하려면 다음 명령을 실행하세요:
-            </p>
-            <code class="block p-4 rounded-lg bg-(--color-code-bg) text-(--color-code-fg) text-sm">
-                pnpm run resume:export
-            </code>
-            <p class="text-sm text-(--color-muted) mt-4">
-                PUBLIC_RESUME_THEME 환경 변수로 테마를 선택할 수 있습니다 (예: flat, kendall, elegant).
-            </p>
-        </div>
-    )}
+    {
+        rendered ? (
+            <div class="resume-page-container">
+                <iframe
+                    src="/resume-standalone.html"
+                    title="Resume"
+                    class="resume-iframe"
+                />
+            </div>
+        ) : (
+            <div class="max-w-2xl mx-auto py-16 text-center">
+                <p class="text-(--color-muted) mb-4">
+                    이력서를 렌더링하려면 다음 명령을 실행하세요:
+                </p>
+                <code class="block p-4 rounded-lg bg-(--color-code-bg) text-(--color-code-fg) text-sm">
+                    pnpm run resume:export
+                </code>
+                <p class="text-sm text-(--color-muted) mt-4">
+                    PUBLIC_RESUME_THEME 환경 변수로 테마를 선택할 수 있습니다
+                    (예: flat, kendall, elegant).
+                </p>
+            </div>
+        )
+    }
 </BaseLayout>

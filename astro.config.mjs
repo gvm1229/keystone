@@ -13,11 +13,7 @@ const isDev = process.env.NODE_ENV === "development";
 
 export default defineConfig({
     output: "static",
-    integrations: [
-        react(),
-        markdoc(),
-        ...(isDev ? [keystatic()] : []),
-    ],
+    integrations: [react(), markdoc(), ...(isDev ? [keystatic()] : [])],
     vite: {
         resolve: {
             alias: { "@": path.resolve(__dirname, "src") },

@@ -4,7 +4,11 @@
  * textarea는 uncontrolled로 두어 브라우저 기본 실행 취소(Ctrl+Z)가 전체 입력에 대해 동작하도록 함.
  */
 import { useState, useRef } from "react";
-import type { AboutData, AboutSectionKey, CompetencySectionKey } from "@/types/about";
+import type {
+    AboutData,
+    AboutSectionKey,
+    CompetencySectionKey,
+} from "@/types/about";
 import {
     ABOUT_SECTION_KEYS,
     COMPETENCY_SECTION_KEYS,
@@ -34,7 +38,10 @@ const defaultSections = ABOUT_SECTION_KEYS.reduce(
 );
 
 const defaultCompetencySections = COMPETENCY_SECTION_KEYS.reduce(
-    (acc: Record<CompetencySectionKey, string[]>, key: CompetencySectionKey) => {
+    (
+        acc: Record<CompetencySectionKey, string[]>,
+        key: CompetencySectionKey
+    ) => {
         acc[key] = [];
         return acc;
     },
@@ -42,30 +49,41 @@ const defaultCompetencySections = COMPETENCY_SECTION_KEYS.reduce(
 );
 
 export default function AboutAdminForm({ initialData }: Props) {
-    const [profileImage, setProfileImage] = useState(initialData.profileImage ?? "");
+    const [profileImage, setProfileImage] = useState(
+        initialData.profileImage ?? ""
+    );
     const [name, setName] = useState(initialData.name ?? "");
     const [email, setEmail] = useState(initialData.contacts?.email ?? "");
     const [github, setGithub] = useState(initialData.contacts?.github ?? "");
-    const [linkedin, setLinkedin] = useState(initialData.contacts?.linkedin ?? "");
+    const [linkedin, setLinkedin] = useState(
+        initialData.contacts?.linkedin ?? ""
+    );
 
     /** Uncontrolled textarea refs – 값은 DOM이 관리하고, 다운로드 시에만 읽음 (브라우저 undo 정상 동작) */
     const descriptionRef = useRef<HTMLTextAreaElement>(null);
     const descriptionSubRef = useRef<HTMLTextAreaElement>(null);
-    const sectionRefs = useRef<Partial<Record<AboutSectionKey, HTMLTextAreaElement | null>>>({});
-    const competencyRefs = useRef<Partial<Record<CompetencySectionKey, HTMLTextAreaElement | null>>>({});
+    const sectionRefs = useRef<
+        Partial<Record<AboutSectionKey, HTMLTextAreaElement | null>>
+    >({});
+    const competencyRefs = useRef<
+        Partial<Record<CompetencySectionKey, HTMLTextAreaElement | null>>
+    >({});
 
     /** 초기값: 경험 유형별/역량별 섹션 텍스트 (uncontrolled defaultValue용) */
     const getInitialSectionText = (key: AboutSectionKey) =>
         (initialData.sections ?? defaultSections)[key]?.join("\n\n") ?? "";
     const getInitialCompetencyText = (key: CompetencySectionKey) =>
-        (initialData.competencySections ?? defaultCompetencySections)[key]?.join("\n\n") ?? "";
+        (initialData.competencySections ?? defaultCompetencySections)[
+            key
+        ]?.join("\n\n") ?? "";
 
     const handleDownload = () => {
         const data: AboutData = {
             profileImage: profileImage.trim() || undefined,
             name: name.trim() || undefined,
             description: descriptionRef.current?.value?.trim() || undefined,
-            descriptionSub: descriptionSubRef.current?.value?.trim() || undefined,
+            descriptionSub:
+                descriptionSubRef.current?.value?.trim() || undefined,
             contacts: {
                 email: email.trim() || undefined,
                 github: github.trim() || undefined,
@@ -84,7 +102,9 @@ export default function AboutAdminForm({ initialData }: Props) {
                 ])
             ) as AboutData["competencySections"],
         };
-        const blob = new Blob([JSON.stringify(data, null, 4)], { type: "application/json" });
+        const blob = new Blob([JSON.stringify(data, null, 4)], {
+            type: "application/json",
+        });
         const url = URL.createObjectURL(blob);
         const a = document.createElement("a");
         a.href = url;
@@ -105,7 +125,9 @@ export default function AboutAdminForm({ initialData }: Props) {
         const t = e.target;
         const isEditable =
             t instanceof HTMLTextAreaElement ||
-            (t instanceof HTMLInputElement && t.type !== "submit" && t.type !== "button");
+            (t instanceof HTMLInputElement &&
+                t.type !== "submit" &&
+                t.type !== "button");
         if (!isEditable) return;
         e.stopPropagation();
         e.nativeEvent.stopPropagation();
@@ -113,11 +135,19 @@ export default function AboutAdminForm({ initialData }: Props) {
     };
 
     return (
-        <form onSubmit={handleFormSubmit} onKeyDown={handleFormKeyDown} className="space-y-8 max-w-2xl">
+        <form
+            onSubmit={handleFormSubmit}
+            onKeyDown={handleFormKeyDown}
+            className="space-y-8 max-w-2xl"
+        >
             <section className="space-y-4">
-                <h2 className="text-2xl font-semibold text-(--color-foreground)">프로필</h2>
+                <h2 className="text-2xl font-semibold text-(--color-foreground)">
+                    프로필
+                </h2>
                 <label className="block">
-                    <span className="block text-lg font-medium text-(--color-muted) mb-1">프로필 이미지 URL</span>
+                    <span className="block text-lg font-medium text-(--color-muted) mb-1">
+                        프로필 이미지 URL
+                    </span>
                     <input
                         type="text"
                         value={profileImage}
@@ -127,7 +157,9 @@ export default function AboutAdminForm({ initialData }: Props) {
                     />
                 </label>
                 <label className="block">
-                    <span className="block text-lg font-medium text-(--color-muted) mb-1">이름 / 인사말</span>
+                    <span className="block text-lg font-medium text-(--color-muted) mb-1">
+                        이름 / 인사말
+                    </span>
                     <input
                         type="text"
                         value={name}
@@ -139,9 +171,13 @@ export default function AboutAdminForm({ initialData }: Props) {
             </section>
 
             <section className="space-y-4">
-                <h2 className="text-2xl font-semibold text-(--color-foreground)">소개</h2>
+                <h2 className="text-2xl font-semibold text-(--color-foreground)">
+                    소개
+                </h2>
                 <label className="block">
-                    <span className="block text-lg font-medium text-(--color-muted) mb-1">메인 소개</span>
+                    <span className="block text-lg font-medium text-(--color-muted) mb-1">
+                        메인 소개
+                    </span>
                     <textarea
                         ref={descriptionRef}
                         defaultValue={initialData.description ?? ""}
@@ -151,7 +187,9 @@ export default function AboutAdminForm({ initialData }: Props) {
                     />
                 </label>
                 <label className="block">
-                    <span className="block text-lg font-medium text-(--color-muted) mb-1">보조 소개</span>
+                    <span className="block text-lg font-medium text-(--color-muted) mb-1">
+                        보조 소개
+                    </span>
                     <textarea
                         ref={descriptionSubRef}
                         defaultValue={initialData.descriptionSub ?? ""}
@@ -163,9 +201,13 @@ export default function AboutAdminForm({ initialData }: Props) {
             </section>
 
             <section className="space-y-4">
-                <h2 className="text-2xl font-semibold text-(--color-foreground)">연락처</h2>
+                <h2 className="text-2xl font-semibold text-(--color-foreground)">
+                    연락처
+                </h2>
                 <label className="block">
-                    <span className="block text-lg font-medium text-(--color-muted) mb-1">Email</span>
+                    <span className="block text-lg font-medium text-(--color-muted) mb-1">
+                        Email
+                    </span>
                     <input
                         type="text"
                         value={email}
@@ -175,7 +217,9 @@ export default function AboutAdminForm({ initialData }: Props) {
                     />
                 </label>
                 <label className="block">
-                    <span className="block text-lg font-medium text-(--color-muted) mb-1">GitHub URL</span>
+                    <span className="block text-lg font-medium text-(--color-muted) mb-1">
+                        GitHub URL
+                    </span>
                     <input
                         type="text"
                         value={github}
@@ -185,7 +229,9 @@ export default function AboutAdminForm({ initialData }: Props) {
                     />
                 </label>
                 <label className="block">
-                    <span className="block text-lg font-medium text-(--color-muted) mb-1">LinkedIn URL</span>
+                    <span className="block text-lg font-medium text-(--color-muted) mb-1">
+                        LinkedIn URL
+                    </span>
                     <input
                         type="text"
                         value={linkedin}
@@ -197,13 +243,19 @@ export default function AboutAdminForm({ initialData }: Props) {
             </section>
 
             <section className="space-y-4">
-                <h2 className="text-2xl font-semibold text-(--color-foreground)">경험 유형별 리스트</h2>
+                <h2 className="text-2xl font-semibold text-(--color-foreground)">
+                    경험 유형별 리스트
+                </h2>
                 <p className="text-xl text-(--color-muted)">
-                    각 구분별로 <strong>빈 줄로 항목을 구분</strong>해 입력하세요. 한 항목 안에서도 줄바꿈 가능합니다. 비워두면 About 페이지에 표시되지 않습니다.
+                    각 구분별로 <strong>빈 줄로 항목을 구분</strong>해
+                    입력하세요. 한 항목 안에서도 줄바꿈 가능합니다. 비워두면
+                    About 페이지에 표시되지 않습니다.
                 </p>
                 {ABOUT_SECTION_KEYS.map((key: AboutSectionKey) => (
                     <label key={key} className="block">
-                        <span className="block text-lg font-medium text-(--color-muted) mb-1">{key}</span>
+                        <span className="block text-lg font-medium text-(--color-muted) mb-1">
+                            {key}
+                        </span>
                         <textarea
                             ref={(el) => {
                                 sectionRefs.current[key] = el;
@@ -218,13 +270,18 @@ export default function AboutAdminForm({ initialData }: Props) {
             </section>
 
             <section className="space-y-4">
-                <h2 className="text-2xl font-semibold text-(--color-foreground)">역량 키워드별 리스트</h2>
+                <h2 className="text-2xl font-semibold text-(--color-foreground)">
+                    역량 키워드별 리스트
+                </h2>
                 <p className="text-xl text-(--color-muted)">
-                    각 역량별로 경험·사례를 빈 줄로 구분해 입력하세요. 비워두면 About 페이지에 표시되지 않습니다.
+                    각 역량별로 경험·사례를 빈 줄로 구분해 입력하세요. 비워두면
+                    About 페이지에 표시되지 않습니다.
                 </p>
                 {COMPETENCY_SECTION_KEYS.map((key: CompetencySectionKey) => (
                     <label key={key} className="block">
-                        <span className="block text-lg font-medium text-(--color-muted) mb-1">{key}</span>
+                        <span className="block text-lg font-medium text-(--color-muted) mb-1">
+                            {key}
+                        </span>
                         <textarea
                             ref={(el) => {
                                 competencyRefs.current[key] = el;

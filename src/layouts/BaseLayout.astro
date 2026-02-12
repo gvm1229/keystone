@@ -13,14 +13,19 @@ interface Props {
     description?: string;
 }
 
-const { title = "Keystone", description = "포트폴리오 & 기술 블로그" } = Astro.props;
+const { title = "Keystone", description = "포트폴리오 & 기술 블로그" } =
+    Astro.props;
 
 // PUBLIC_COLOR_SCHEME env (blue | gray | beige | blackwhite), 기본 gray
 const colorScheme = (import.meta.env.PUBLIC_COLOR_SCHEME ?? "gray") as string;
-const validScheme = ["blue", "gray", "beige", "blackwhite"].includes(colorScheme) ? colorScheme : "gray";
+const validScheme = ["blue", "gray", "beige", "blackwhite"].includes(
+    colorScheme
+)
+    ? colorScheme
+    : "gray";
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko" data-color-scheme={validScheme}>
     <head>
         <meta charset="UTF-8" />
@@ -32,7 +37,9 @@ const validScheme = ["blue", "gray", "beige", "blackwhite"].includes(colorScheme
         <script is:inline define:vars={{}}>
             (function () {
                 const theme = localStorage.getItem("theme") || "system";
-                const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+                const systemDark = window.matchMedia(
+                    "(prefers-color-scheme: dark)"
+                ).matches;
                 const isDark =
                     theme === "dark" || (theme === "system" && systemDark);
                 if (isDark) {
@@ -43,7 +50,9 @@ const validScheme = ["blue", "gray", "beige", "blackwhite"].includes(colorScheme
             })();
         </script>
     </head>
-    <body class="min-h-screen bg-(--color-surface) text-(--color-foreground) transition-colors">
+    <body
+        class="min-h-screen bg-(--color-surface) text-(--color-foreground) transition-colors"
+    >
         <Header />
         <main class="container mx-auto px-4 py-8">
             <slot />

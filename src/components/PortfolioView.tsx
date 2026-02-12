@@ -33,7 +33,9 @@ export default function PortfolioView({ projects }: Props) {
         <div className="space-y-6">
             {/* List / Block 토글 */}
             <div className="flex items-center gap-2">
-                <span className="text-sm font-medium text-(--color-muted) mr-2">보기:</span>
+                <span className="text-sm font-medium text-(--color-muted) mr-2">
+                    보기:
+                </span>
                 <div
                     className="inline-flex rounded-lg border border-(--color-border) bg-(--color-surface-subtle) p-0.5"
                     role="tablist"
@@ -90,24 +92,34 @@ export default function PortfolioView({ projects }: Props) {
                                     </a>
                                 ) : null}
                             </div>
-                            <p className="text-(--color-muted) mb-4">{project.description}</p>
+                            <p className="text-(--color-muted) mb-4">
+                                {project.description}
+                            </p>
                             <dl className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm mb-4 text-(--color-foreground)">
                                 <div>
-                                    <dt className="text-(--color-muted) font-medium">기간</dt>
+                                    <dt className="text-(--color-muted) font-medium">
+                                        기간
+                                    </dt>
                                     <dd>
                                         {project.startDate} ~ {project.endDate}
                                     </dd>
                                 </div>
                                 <div>
-                                    <dt className="text-(--color-muted) font-medium">역할</dt>
+                                    <dt className="text-(--color-muted) font-medium">
+                                        역할
+                                    </dt>
                                     <dd>{project.role}</dd>
                                 </div>
                                 <div>
-                                    <dt className="text-(--color-muted) font-medium">참여 인원</dt>
+                                    <dt className="text-(--color-muted) font-medium">
+                                        참여 인원
+                                    </dt>
                                     <dd>{project.teamSize}명</dd>
                                 </div>
                                 <div>
-                                    <dt className="text-(--color-muted) font-medium">목표</dt>
+                                    <dt className="text-(--color-muted) font-medium">
+                                        목표
+                                    </dt>
                                     <dd>{project.goal}</dd>
                                 </div>
                             </dl>
@@ -163,7 +175,10 @@ export default function PortfolioView({ projects }: Props) {
                             <div className="p-4">
                                 {/* 제목 */}
                                 <h2 className="font-semibold text-(--color-foreground) mb-2 flex items-center gap-2">
-                                    <span className="text-(--color-muted)" aria-hidden>
+                                    <span
+                                        className="text-(--color-muted)"
+                                        aria-hidden
+                                    >
                                         📄
                                     </span>
                                     {project.title}
@@ -189,8 +204,14 @@ export default function PortfolioView({ projects }: Props) {
                                 {project.badges?.length ? (
                                     <div className="mt-3 flex flex-wrap gap-2 text-xs text-(--color-foreground)">
                                         {project.badges.map((b, i) => (
-                                            <span key={i} className="flex items-center gap-1">
-                                                <span className="text-(--color-muted)" aria-hidden>
+                                            <span
+                                                key={i}
+                                                className="flex items-center gap-1"
+                                            >
+                                                <span
+                                                    className="text-(--color-muted)"
+                                                    aria-hidden
+                                                >
                                                     ◆
                                                 </span>
                                                 {b.text}
