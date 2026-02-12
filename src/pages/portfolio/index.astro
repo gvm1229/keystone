@@ -3,8 +3,8 @@
  * Portfolio 페이지 - 프로젝트 목록
  * - src/data/portfolio.json (Supabase 연동 시 교체 가능)
  */
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import type { Portfolio } from "../../types/portfolio";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import type { Portfolio } from "@/types/portfolio";
 
 // 빌드 시점에 JSON 로드 (Supabase 연동 시 fetch로 교체)
 const portfolio: Portfolio = await import("../../data/portfolio.json").then((m) => m.default);

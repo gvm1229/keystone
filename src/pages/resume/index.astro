@@ -4,8 +4,8 @@
  * - PUBLIC_RESUME_THEME env로 테마 선택 (flat, kendall, elegant 등)
  * - prebuild/predev에서 resume:export가 실행되어 src/data/resume-rendered.json 생성
  */
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import resumeData from "../../data/resume.json";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import resumeData from "@/data/resume.json";
 
 // resume-rendered.json은 resume:export 스크립트로 생성됨
 /** @type {{ theme: string; styles: string; body: string } | null} */
