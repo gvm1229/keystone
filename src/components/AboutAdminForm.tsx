@@ -115,9 +115,9 @@ export default function AboutAdminForm({ initialData }: Props) {
     return (
         <form onSubmit={handleFormSubmit} onKeyDown={handleFormKeyDown} className="space-y-8 max-w-2xl">
             <section className="space-y-4">
-                <h2 className="text-lg font-semibold text-(--color-foreground)">프로필</h2>
+                <h2 className="text-2xl font-semibold text-(--color-foreground)">프로필</h2>
                 <label className="block">
-                    <span className="block text-sm font-medium text-(--color-muted) mb-1">프로필 이미지 URL</span>
+                    <span className="block text-lg font-medium text-(--color-muted) mb-1">프로필 이미지 URL</span>
                     <input
                         type="text"
                         value={profileImage}
@@ -127,7 +127,7 @@ export default function AboutAdminForm({ initialData }: Props) {
                     />
                 </label>
                 <label className="block">
-                    <span className="block text-sm font-medium text-(--color-muted) mb-1">이름 / 인사말</span>
+                    <span className="block text-lg font-medium text-(--color-muted) mb-1">이름 / 인사말</span>
                     <input
                         type="text"
                         value={name}
@@ -139,9 +139,9 @@ export default function AboutAdminForm({ initialData }: Props) {
             </section>
 
             <section className="space-y-4">
-                <h2 className="text-lg font-semibold text-(--color-foreground)">소개</h2>
+                <h2 className="text-2xl font-semibold text-(--color-foreground)">소개</h2>
                 <label className="block">
-                    <span className="block text-sm font-medium text-(--color-muted) mb-1">메인 소개</span>
+                    <span className="block text-lg font-medium text-(--color-muted) mb-1">메인 소개</span>
                     <textarea
                         ref={descriptionRef}
                         defaultValue={initialData.description ?? ""}
@@ -151,7 +151,7 @@ export default function AboutAdminForm({ initialData }: Props) {
                     />
                 </label>
                 <label className="block">
-                    <span className="block text-sm font-medium text-(--color-muted) mb-1">보조 소개</span>
+                    <span className="block text-lg font-medium text-(--color-muted) mb-1">보조 소개</span>
                     <textarea
                         ref={descriptionSubRef}
                         defaultValue={initialData.descriptionSub ?? ""}
@@ -163,9 +163,9 @@ export default function AboutAdminForm({ initialData }: Props) {
             </section>
 
             <section className="space-y-4">
-                <h2 className="text-lg font-semibold text-(--color-foreground)">연락처</h2>
+                <h2 className="text-2xl font-semibold text-(--color-foreground)">연락처</h2>
                 <label className="block">
-                    <span className="block text-sm font-medium text-(--color-muted) mb-1">Email</span>
+                    <span className="block text-lg font-medium text-(--color-muted) mb-1">Email</span>
                     <input
                         type="text"
                         value={email}
@@ -175,7 +175,7 @@ export default function AboutAdminForm({ initialData }: Props) {
                     />
                 </label>
                 <label className="block">
-                    <span className="block text-sm font-medium text-(--color-muted) mb-1">GitHub URL</span>
+                    <span className="block text-lg font-medium text-(--color-muted) mb-1">GitHub URL</span>
                     <input
                         type="text"
                         value={github}
@@ -185,7 +185,7 @@ export default function AboutAdminForm({ initialData }: Props) {
                     />
                 </label>
                 <label className="block">
-                    <span className="block text-sm font-medium text-(--color-muted) mb-1">LinkedIn URL</span>
+                    <span className="block text-lg font-medium text-(--color-muted) mb-1">LinkedIn URL</span>
                     <input
                         type="text"
                         value={linkedin}
@@ -197,13 +197,13 @@ export default function AboutAdminForm({ initialData }: Props) {
             </section>
 
             <section className="space-y-4">
-                <h2 className="text-lg font-semibold text-(--color-foreground)">경험 유형별 리스트</h2>
-                <p className="text-sm text-(--color-muted)">
+                <h2 className="text-2xl font-semibold text-(--color-foreground)">경험 유형별 리스트</h2>
+                <p className="text-xl text-(--color-muted)">
                     각 구분별로 <strong>빈 줄로 항목을 구분</strong>해 입력하세요. 한 항목 안에서도 줄바꿈 가능합니다. 비워두면 About 페이지에 표시되지 않습니다.
                 </p>
                 {ABOUT_SECTION_KEYS.map((key: AboutSectionKey) => (
                     <label key={key} className="block">
-                        <span className="block text-sm font-medium text-(--color-muted) mb-1">{key}</span>
+                        <span className="block text-lg font-medium text-(--color-muted) mb-1">{key}</span>
                         <textarea
                             ref={(el) => {
                                 sectionRefs.current[key] = el;
@@ -218,13 +218,13 @@ export default function AboutAdminForm({ initialData }: Props) {
             </section>
 
             <section className="space-y-4">
-                <h2 className="text-lg font-semibold text-(--color-foreground)">역량 키워드별 리스트</h2>
-                <p className="text-sm text-(--color-muted)">
+                <h2 className="text-2xl font-semibold text-(--color-foreground)">역량 키워드별 리스트</h2>
+                <p className="text-xl text-(--color-muted)">
                     각 역량별로 경험·사례를 빈 줄로 구분해 입력하세요. 비워두면 About 페이지에 표시되지 않습니다.
                 </p>
                 {COMPETENCY_SECTION_KEYS.map((key: CompetencySectionKey) => (
                     <label key={key} className="block">
-                        <span className="block text-sm font-medium text-(--color-muted) mb-1">{key}</span>
+                        <span className="block text-lg font-medium text-(--color-muted) mb-1">{key}</span>
                         <textarea
                             ref={(el) => {
                                 competencyRefs.current[key] = el;

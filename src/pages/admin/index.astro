@@ -46,8 +46,8 @@ if (isDev) {
 
 <BaseLayout title="Admin - Keystone" description="About 데이터 편집">
     <article class="max-w-3xl mx-auto py-12">
-        <h1 class="text-3xl font-bold mb-2 text-(--color-foreground)">About 관리</h1>
-        <p class="text-(--color-muted) mb-8">프로필, 소개, 연락처, 경력 요약을 편집한 뒤 JSON을 다운로드하여 <code class="text-sm px-1 py-0.5 rounded bg-(--color-code-bg) text-(--color-code-fg)">src/data/about.json</code> 에 반영하세요.</p>
+        <h1 class="text-4xl font-bold mb-2 text-(--color-foreground)">About 관리</h1>
+        <p class="text-lg text-(--color-muted) mb-8">프로필, 소개, 연락처, 경력 요약을 편집한 뒤 JSON을 다운로드하여 <code class="text-sm px-1 py-0.5 rounded bg-(--color-code-bg) text-(--color-code-fg)">src/data/about.json</code> 에 반영하세요.</p>
 
         {isDev ? (
             <AboutAdminForm client:load initialData={initialData} />
