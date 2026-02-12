@@ -2,11 +2,13 @@
 /**
  * 헤더 컴포넌트
  * - 사이트 타이틀 Keystone
- * - 네비게이션: About me, Resume, Portfolio, Blog
+ * - 네비게이션: About me, Resume, Portfolio, Blog, Admin(dev 전용)
  * - GitHub 링크
  * - 다크모드 토글 (light/dark/system)
  */
-import ThemeToggle from "./ThemeToggle";
+import ThemeToggle from "@/components/ThemeToggle";
+
+const isDev = import.meta.env.DEV;
 ---
 
 <header class="sticky top-0 z-50 border-b border-(--color-border) bg-(--color-surface) backdrop-blur-sm">
@@ -42,6 +44,14 @@ import ThemeToggle from "./ThemeToggle";
             >
                 Blog
             </a>
+            {isDev && (
+                <a
+                    href="/admin"
+                    class="px-3 py-2 text-sm font-medium text-(--color-muted) hover:text-(--color-foreground) rounded-md hover:opacity-80 transition-colors"
+                >
+                    Admin
+                </a>
+            )}
 
             {/* GitHub 아이콘 링크 */}
             <a
