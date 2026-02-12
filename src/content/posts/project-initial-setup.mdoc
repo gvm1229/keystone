@@ -4,7 +4,7 @@ description: Keystone 프로젝트 구조, 기술 스택과 선택 이유
 pubDate: 2025-02-02
 ---
 
-이 글에서는 Keystone(포트폴리오 + 기술 블로그) 프로젝트의 초기 구조와 기술 스택을 정리한다.
+이 글에서는 Keystone(포트폴리오 + 기술 블로그) 프로젝트의 초기 구조와 기술 스택을 정리.
 
 ## 프로젝트 구조
 
@@ -42,6 +42,6 @@ keystone/
 
 ## 핵심 설계
 
-- **정적 출력 (`output: "static"`)**: 블로그·포트폴리오 특성상 빌드 타임 생성으로 충분하다.
-- **Keystatic은 dev에서만**: `pnpm dev` 시에만 `/keystatic` 에디터 노출, 프로덕션 빌드에는 포함하지 않는다.
+- **정적 출력 (`output: "static"`)**: 블로그·포트폴리오 특성상 빌드 타임 생성으로 충분.
+- **Keystatic은 dev에서만**: `pnpm dev` 시에만 `/keystatic` 에디터 노출, 프로덕션 빌드에는 포함하지 않음.
 - **React는 선택적**: ThemeToggle 같은 클라이언트 인터랙션에만 `@astrojs/react` 사용.

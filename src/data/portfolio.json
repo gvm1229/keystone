@@ -15,7 +15,7 @@
                 "다크모드 토글 구현"
             ],
             "keywords": ["Astro", "Tailwind CSS", "TypeScript", "Keystatic", "Supabase"],
-            "github": "https://github.com/"
+            "github": "https://github.com/gvm1229/keystone"
         }
     ]
 }
