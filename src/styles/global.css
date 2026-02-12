@@ -215,15 +215,23 @@
     opacity: 0.85;
 }
 
-/* Resume 페이지: iframe으로 완전 격리하여 헤더/외부 레이아웃에 영향 없음 */
+/* Resume 페이지: iframe이 헤더·main 패딩 제외한 뷰포트 전체 높이를 채우도록 (세로/가로 공통) */
 .resume-page-container {
     isolation: isolate;
     width: 100%;
-    min-height: 800px;
+    /* 헤더(~4rem) + main 상하 padding(각 2rem) ≈ 8rem */
+    height: calc(100vh - 8rem);
+    min-height: 20rem;
+}
+@supports (height: 100dvh) {
+    .resume-page-container {
+        height: calc(100dvh - 8rem);
+    }
 }
 .resume-iframe {
     width: 100%;
-    min-height: 1000px;
+    height: 100%;
+    min-height: 100%;
     border: none;
     display: block;
 }
