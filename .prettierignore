@@ -5,5 +5,3 @@ dist
 .keystatic
 *.min.js
 pnpm-lock.yaml
-public/resume-standalone.html
-src/data/resume-rendered.json

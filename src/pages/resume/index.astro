@@ -1,53 +1,33 @@
 ---
 /**
- * Resume 페이지 - JSON Resume 테마 기반
- * - PUBLIC_RESUME_THEME env로 테마 선택 (flat, kendall, elegant 등)
- * - prebuild/predev에서 resume:export가 실행되어 src/data/resume-rendered.json 생성
+ * Resume 페이지 - 네이티브 HTML 이력서 (3가지 레이아웃)
  */
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import ResumeView from "@/components/resume/ResumeView";
+import ResumeClassic from "@/components/resume/ResumeClassic.astro";
+import ResumeModern from "@/components/resume/ResumeModern.astro";
+import ResumeMinimal from "@/components/resume/ResumeMinimal.astro";
 import resumeData from "@/data/resume.json";
-
-// resume-rendered.json은 resume:export 스크립트로 생성됨
-/** @type {{ theme: string; styles: string; body: string } | null} */
-let rendered = null;
-try {
-    rendered = await import("../../data/resume-rendered.json").then(
-        (m) => m.default
-    );
-} catch {
-    rendered = null;
-}
 
 const title = resumeData.basics?.name
     ? `${resumeData.basics.name} - Resume | Keystone`
     : "Resume - Keystone";
 const description = resumeData.basics?.summary ?? "이력서";
-const hasResumeContent = rendered && rendered.body;
 ---
 
 <BaseLayout title={title} description={description}>
-    {
-        hasResumeContent ? (
-            <div class="resume-page-container">
-                <iframe
-                    src="/resume-standalone.html"
-                    title="Resume"
-                    class="resume-iframe"
-                />
+    <div class="resume-page-wrapper">
+        <ResumeView client:load resume={resumeData} />
+        <div class="resume-layouts-container">
+            <div id="resume-classic-container" class="resume-layout hidden">
+                <ResumeClassic resume={resumeData} />
             </div>
-        ) : (
-            <div class="max-w-2xl mx-auto py-16 text-center">
-                <p class="text-(--color-muted) mb-4">
-                    이력서를 렌더링하려면 다음 명령을 실행하세요:
-                </p>
-                <code class="block p-4 rounded-lg bg-(--color-code-bg) text-(--color-code-fg) text-sm">
-                    pnpm run resume:export
-                </code>
-                <p class="text-sm text-(--color-muted) mt-4">
-                    PUBLIC_RESUME_THEME 환경 변수로 테마를 선택할 수 있습니다
-                    (예: flat, kendall, elegant).
-                </p>
+            <div id="resume-modern-container" class="resume-layout hidden">
+                <ResumeModern resume={resumeData} />
             </div>
-        )
-    }
+            <div id="resume-minimal-container" class="resume-layout hidden">
+                <ResumeMinimal resume={resumeData} />
+            </div>
+        </div>
+    </div>
 </BaseLayout>
