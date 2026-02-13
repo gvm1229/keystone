@@ -5,17 +5,19 @@ import react from "@astrojs/react";
 import markdoc from "@astrojs/markdoc";
 import keystatic from "@keystatic/astro";
 import tailwindcss from "@tailwindcss/vite";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 
+const __dirname = fileURLToPath(new URL(".", import.meta.url));
 const isDev = process.env.NODE_ENV === "development";
 
 export default defineConfig({
     output: "static",
-    integrations: [
-        react(),
-        markdoc(),
-        ...(isDev ? [keystatic()] : []),
-    ],
+    integrations: [react(), markdoc(), ...(isDev ? [keystatic()] : [])],
     vite: {
+        resolve: {
+            alias: { "@": path.resolve(__dirname, "src") },
+        },
         plugins: [tailwindcss()],
     },
 });

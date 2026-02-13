@@ -55,7 +55,7 @@ try {
     /* ignore */
 }
 
-execSync(`pnpm exec resume export --theme ${theme} "${outputPath}"`, {
+execSync(`npx --yes resume-cli@3.1.2 export --theme ${theme} "${outputPath}"`, {
     cwd: root,
     stdio: "inherit",
 });
@@ -96,7 +96,12 @@ function scopeCss(css, scope) {
         .replace(/<style[^>]*>([\s\S]*?)<\/style>/gi, (_, inner) => inner)
         .replace(/@import[^;]+;/g, ""); // @import 제거 (스코핑 어려움)
     const scoped = scopeRules(styleContent.trim(), scope);
-    return linkTags.join("\n") + "\n<style type=\"text/css\">\n" + scoped + "\n</style>";
+    return (
+        linkTags.join("\n") +
+        '\n<style type="text/css">\n' +
+        scoped +
+        "\n</style>"
+    );
 }
 
 function scopeRules(css, scope) {
@@ -110,7 +115,10 @@ function scopeRules(css, scope) {
         if (i >= len) break;
 
         // @media, @supports, @keyframes 등 at-rule 처리
-        if (/^@(media|supports|document)/.test(trimmed) || /^@(-webkit-)?keyframes\s/.test(trimmed)) {
+        if (
+            /^@(media|supports|document)/.test(trimmed) ||
+            /^@(-webkit-)?keyframes\s/.test(trimmed)
+        ) {
             const atStart = i;
             const openBrace = css.indexOf("{", i);
             if (openBrace === -1) break;
@@ -127,7 +135,10 @@ function scopeRules(css, scope) {
                 result += block;
             } else {
                 const innerContent = block.slice(block.indexOf("{") + 1, -1);
-                result += block.slice(0, block.indexOf("{") + 1) + scopeRules(innerContent, scope) + "}";
+                result +=
+                    block.slice(0, block.indexOf("{") + 1) +
+                    scopeRules(innerContent, scope) +
+                    "}";
             }
             continue;
         }

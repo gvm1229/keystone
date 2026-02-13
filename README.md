@@ -9,8 +9,8 @@
 - **CMS**: Keystatic (블로그 포스트 전용)
 - **Styling**: Tailwind CSS 4+
 - **Language**: TypeScript
-- **Git**: Husky (pre-commit lint)
-- **Lint**: ESLint
+- **Git**: Husky (pre-commit format check)
+- **Format**: Prettier
 - **Package manager**: pnpm
 
 ## pnpm 설치
@@ -18,17 +18,20 @@
 Node.js LTS(v20 이상 권장)가 설치되어 있다면:
 
 **방법 1: npm으로 전역 설치 (권장)**
+
 ```bash
 npm install -g pnpm@latest
 ```
 
 **방법 2: Corepack 사용 (Node 16.9+)**
+
 ```bash
 corepack enable
 corepack prepare pnpm@latest --activate
 ```
 
 **방법 3: Windows PowerShell**
+
 ```powershell
 iwr https://get.pnpm.io/install.ps1 -useb | iex
 ```
@@ -47,32 +50,32 @@ pnpm dev
 
 ## 스크립트
 
-| 스크립트 | 설명 |
-|---------|------|
-| `pnpm dev` | 개발 서버 실행 |
-| `pnpm build` | 프로덕션 빌드 |
-| `pnpm preview` | 빌드 결과 미리보기 |
-| `pnpm lint` | ESLint 실행 |
-| `pnpm lint:fix` | ESLint 자동 수정 |
-| `pnpm git-refresh` | 스테이징 해제, 캐시 삭제 후 git add (새/변경된 .gitignore 반영) |
-| `pnpm reinstall` | node_modules 삭제 후 깨끗한 재설치 |
-| `pnpm upgrade-all` | 모든 패키지 최신 버전으로 업데이트 |
+| 스크립트             | 설명                                                                        |
+| -------------------- | --------------------------------------------------------------------------- |
+| `pnpm dev`           | 개발 서버 실행                                                              |
+| `pnpm build`         | 프로덕션 빌드                                                               |
+| `pnpm preview`       | 빌드 결과 미리보기                                                          |
+| `pnpm format`        | Prettier로 전체 포맷                                                        |
+| `pnpm format:check`  | 포맷 검사만 (CI/ pre-commit용)                                              |
+| `pnpm git-refresh`   | 스테이징 해제, 캐시 삭제 후 git add (새/변경된 .gitignore 반영)             |
+| `pnpm reinstall`     | node_modules 삭제 후 깨끗한 재설치                                          |
+| `pnpm upgrade-all`   | 모든 패키지 최신 버전으로 업데이트                                          |
 | `pnpm resume:export` | `resume.json`을 선택한 테마로 HTML로 export (predev/prebuild에서 자동 실행) |
 
 ## 데이터 소스
 
-| 데이터 | 경로 | 스키마 |
-|--------|------|--------|
-| 포트폴리오 | `src/data/portfolio.json` | `PORTFOLIO_SCHEMA.md` |
-| 이력서 | `src/data/resume.json` | [JSON Resume](https://docs.jsonresume.org/schema). `PUBLIC_RESUME_THEME`으로 테마 선택 (flat, kendall, elegant 등). [400+ 테마](https://jsonresume.org/themes) 중 `pnpm add jsonresume-theme-<이름>` 설치 후 사용 가능 |
+| 데이터     | 경로                      | 스키마                                                                                                                                                                                                                 |
+| ---------- | ------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 포트폴리오 | `src/data/portfolio.json` | `PORTFOLIO_SCHEMA.md`                                                                                                                                                                                                  |
+| 이력서     | `src/data/resume.json`    | [JSON Resume](https://docs.jsonresume.org/schema). `PUBLIC_RESUME_THEME`으로 테마 선택 (flat, kendall, elegant 등). [400+ 테마](https://jsonresume.org/themes) 중 `pnpm add jsonresume-theme-<이름>` 설치 후 사용 가능 |
 
 ## 환경 변수
 
 `env.example`을 `.env.local`로 복사 후 설정.
 
-| 변수 | 설명 |
-|------|------|
-| `PUBLIC_SUPABASE_URL` | Supabase 프로젝트 URL |
-| `PUBLIC_SUPABASE_ANON_KEY` | Supabase 익명 키 |
-| `PUBLIC_COLOR_SCHEME` | 사이트 컬러 스킴: `blue`, `gray`, `beige`, `blackwhite`. 기본값 `gray` |
-| `PUBLIC_RESUME_THEME` | JSON Resume 테마 (flat, kendall, elegant 등). 기본 설치된 테마만 사용 가능. 추가 테마는 `pnpm add jsonresume-theme-<이름>` |
+| 변수                       | 설명                                                                                                                       |
+| -------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `PUBLIC_SUPABASE_URL`      | Supabase 프로젝트 URL                                                                                                      |
+| `PUBLIC_SUPABASE_ANON_KEY` | Supabase 익명 키                                                                                                           |
+| `PUBLIC_COLOR_SCHEME`      | 사이트 컬러 스킴: `blue`, `gray`, `beige`, `blackwhite`. 기본값 `gray`                                                     |
+| `PUBLIC_RESUME_THEME`      | JSON Resume 테마 (flat, kendall, elegant 등). 기본 설치된 테마만 사용 가능. 추가 테마는 `pnpm add jsonresume-theme-<이름>` |

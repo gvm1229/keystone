@@ -3,7 +3,7 @@
  * 블로그 포스트 상세 페이지
  * - Keystatic/Content Collections 기반
  */
-import BaseLayout from "../../layouts/BaseLayout.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
@@ -22,13 +22,20 @@ const { post } = Astro.props;
 const { Content } = await post.render();
 ---
 
-<BaseLayout title={`${post.data.title} - Keystone`} description={post.data.description ?? ""}>
+<BaseLayout
+    title={`${post.data.title} - Keystone`}
+    description={post.data.description ?? ""}
+>
     <article class="max-w-3xl mx-auto">
         <header class="mb-8">
             <h1 class="text-4xl font-bold mb-2">{post.data.title}</h1>
-            {post.data.description && (
-                <p class="text-lg text-(--color-muted)">{post.data.description}</p>
-            )}
+            {
+                post.data.description && (
+                    <p class="text-lg text-(--color-muted)">
+                        {post.data.description}
+                    </p>
+                )
+            }
             <time
                 class="text-sm text-(--color-muted) block mt-2"
                 datetime={post.data.pubDate.toISOString()}

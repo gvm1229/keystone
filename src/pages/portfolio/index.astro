@@ -1,82 +1,27 @@
 ---
 /**
  * Portfolio 페이지 - 프로젝트 목록
- * - src/data/portfolio.json (Supabase 연동 시 교체 가능)
+ * List / Block 뷰 토글, Block 뷰는 썸네일 그리드·상세 페이지 링크
  */
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import type { Portfolio } from "../../types/portfolio";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import PortfolioView from "@/components/PortfolioView";
+import type { Portfolio } from "@/types/portfolio";
 
-// 빌드 시점에 JSON 로드 (Supabase 연동 시 fetch로 교체)
-const portfolio: Portfolio = await import("../../data/portfolio.json").then((m) => m.default);
+const portfolio: Portfolio = await import("@/data/portfolio.json").then(
+    (m) => m.default
+);
 ---
 
 <BaseLayout title="Portfolio - Keystone" description="프로젝트 포트폴리오">
-    <h1 class="text-3xl font-bold mb-6 text-(--color-foreground)">Portfolio</h1>
-    <p class="text-(--color-muted) mb-8">
-        프로젝트 목록입니다. Supabase 연동 시 실시간 데이터로 전환됩니다.
-    </p>
+    <div class="max-w-4xl">
+        <h1 class="text-3xl font-bold mb-2 text-(--color-foreground)">
+            Portfolio
+        </h1>
+        <p class="text-(--color-muted) mb-8">
+            프로젝트 목록입니다. List는 상세 정보를 한 화면에, Block은 카드
+            그리드로 보기입니다.
+        </p>
 
-    <div class="space-y-8">
-        {portfolio.projects.map((project) => (
-            <article
-                class="p-6 rounded-xl border border-(--color-border) bg-(--color-surface-subtle)"
-            >
-                <div class="flex flex-wrap items-start justify-between gap-4 mb-4">
-                    <h2 class="text-2xl font-bold text-(--color-foreground)">{project.title}</h2>
-                    <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="text-(--color-link) hover:underline text-sm"
-                    >
-                        GitHub →
-                    </a>
-                </div>
-                <p class="text-(--color-muted) mb-4">{project.description}</p>
-                <dl class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm mb-4 text-(--color-foreground)">
-                    <div>
-                        <dt class="text-(--color-muted) font-medium">기간</dt>
-                        <dd>
-                            {project.startDate} ~ {project.endDate}
-                        </dd>
-                    </div>
-                    <div>
-                        <dt class="text-(--color-muted) font-medium">역할</dt>
-                        <dd>{project.role}</dd>
-                    </div>
-                    <div>
-                        <dt class="text-(--color-muted) font-medium">참여 인원</dt>
-                        <dd>{project.teamSize}명</dd>
-                    </div>
-                    <div>
-                        <dt class="text-(--color-muted) font-medium">목표</dt>
-                        <dd>{project.goal}</dd>
-                    </div>
-                </dl>
-                {project.accomplishments.length > 0 && (
-                    <div class="mb-4">
-                        <h3 class="text-sm font-semibold text-(--color-foreground) mb-2">
-                            성과
-                        </h3>
-                        <ul class="list-disc list-inside space-y-1 text-sm text-(--color-foreground)">
-                            {project.accomplishments.map((a) => (
-                                <li>{a}</li>
-                            ))}
-                        </ul>
-                    </div>
-                )}
-                {project.keywords.length > 0 && (
-                    <div class="flex flex-wrap gap-2">
-                        {project.keywords.map((k) => (
-                            <span
-                                class="px-2 py-1 text-xs rounded-full bg-(--color-tag-bg) text-(--color-tag-fg)"
-                            >
-                                {k}
-                            </span>
-                        ))}
-                    </div>
-                )}
-            </article>
-        ))}
+        <PortfolioView client:load projects={portfolio.projects} />
     </div>
 </BaseLayout>

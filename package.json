@@ -9,8 +9,8 @@
         "dev": "astro dev",
         "build": "astro build",
         "preview": "astro preview",
-        "lint": "eslint .",
-        "lint:fix": "eslint . --fix",
+        "format": "prettier --write .",
+        "format:check": "prettier --check .",
         "git-refresh": "git reset HEAD && git rm -r --cached . 2>/dev/null || true && git add .",
         "reinstall": "rimraf node_modules pnpm-lock.yaml && pnpm install",
         "upgrade-all": "pnpm update --latest",
@@ -23,31 +23,29 @@
         "@keystatic/core": "^0.5.48",
         "@supabase/supabase-js": "^2.93.3",
         "astro": "^5.17.1",
+        "jsonresume-theme-basic": "^1.0.3",
         "jsonresume-theme-elegant": "^1.16.1",
         "jsonresume-theme-flat": "^0.3.7",
         "jsonresume-theme-kendall": "^0.2.0",
+        "jsonresume-theme-modern": "^0.0.18",
         "react": "^19.2.4",
         "react-dom": "^19.2.4"
     },
     "devDependencies": {
         "@astrojs/check": "^0.9.6",
-        "@eslint/js": "^9.39.2",
         "@tailwindcss/typography": "^0.5.19",
         "@tailwindcss/vite": "^4.1.18",
         "@types/react": "^19.2.10",
         "@types/react-dom": "^19.2.3",
-        "eslint": "^9.39.2",
-        "eslint-plugin-astro": "^1.5.0",
-        "globals": "^17.3.0",
         "husky": "^9.1.7",
-        "resume-cli": "^3.1.2",
         "rimraf": "^6.1.2",
         "tailwindcss": "^4.1.18",
         "typescript": "~5.9.3",
-        "typescript-eslint": "^8.54.0"
+        "prettier": "^3.4.2",
+        "prettier-plugin-astro": "^0.14.0"
     },
     "engines": {
-        "node": ">=24.0.0"
+        "node": ">=24.13.0"
     },
     "packageManager": "pnpm@10.28.2+sha512.41872f037ad22f7348e3b1debbaf7e867cfd448f2726d9cf74c08f19507c31d2c8e7a11525b983febc2df640b5438dee6023ebb1f84ed43cc2d654d2bc326264"
 }

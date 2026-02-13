@@ -2,6 +2,10 @@
 // 개인 연락처/이력서 정보는 제외하고 프로젝트 정보만 포함
 
 export interface PortfolioProject {
+    /** URL 경로용 슬러그 (예: /portfolio/timeout) */
+    slug: string;
+    /** 썸네일 이미지 URL (블록 뷰용) */
+    thumbnail?: string;
     /** 프로젝트 제목 */
     title: string;
     /** 프로젝트 설명 */
@@ -22,6 +26,8 @@ export interface PortfolioProject {
     keywords: string[];
     /** GitHub 저장소 링크 */
     github: string;
+    /** 블록 뷰용 보조 문구 (예: "STOVE 스토어 출시", "BIC 루키 선정") */
+    badges?: { text: string }[];
 }
 
 export interface Portfolio {
