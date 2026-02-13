@@ -124,7 +124,7 @@ const formatDateRange = (startDate?: string, endDate?: string): string => {
                 if (sectionKey === "skills" && Array.isArray(sectionValue)) {
                     return (
                         <section class="resume-section">
-                            <h2 class="resume-section-title">Skills</h2>
+                            <h2 class="resume-section-title">기술</h2>
                             <div class="resume-skills">
                                 {sectionValue.map((skill) => (
                                     <div class="resume-skill-item">
@@ -153,7 +153,7 @@ const formatDateRange = (startDate?: string, endDate?: string): string => {
                 if (sectionKey === "work" && Array.isArray(sectionValue)) {
                     return (
                         <section class="resume-section">
-                            <h2 class="resume-section-title">Experience</h2>
+                            <h2 class="resume-section-title">경력</h2>
                             {sectionValue.map((workItem) => (
                                 <div class="resume-work-item">
                                     <div class="resume-work-header">
@@ -212,7 +212,7 @@ const formatDateRange = (startDate?: string, endDate?: string): string => {
                 if (sectionKey === "education" && Array.isArray(sectionValue)) {
                     return (
                         <section class="resume-section">
-                            <h2 class="resume-section-title">Education</h2>
+                            <h2 class="resume-section-title">학력</h2>
                             {sectionValue.map((education) => (
                                 <div class="resume-education-item">
                                     {education.institution ? (
@@ -267,7 +267,7 @@ const formatDateRange = (startDate?: string, endDate?: string): string => {
                 if (sectionKey === "projects" && Array.isArray(sectionValue)) {
                     return (
                         <section class="resume-section">
-                            <h2 class="resume-section-title">Projects</h2>
+                            <h2 class="resume-section-title">프로젝트</h2>
                             {sectionValue.map((project) => (
                                 <div class="resume-project-item">
                                     {project.name ? (
@@ -317,13 +317,13 @@ const formatDateRange = (startDate?: string, endDate?: string): string => {
                 // 기타 섹션 (volunteer, awards, certificates, publications, languages, interests, references)
                 if (Array.isArray(sectionValue) && sectionValue.length > 0) {
                     const sectionTitleMap: { [key: string]: string } = {
-                        volunteer: "Volunteer",
-                        awards: "Awards",
-                        certificates: "Certificates",
-                        publications: "Publications",
-                        languages: "Languages",
-                        interests: "Interests",
-                        references: "References",
+                        volunteer: "봉사 활동",
+                        awards: "수상",
+                        certificates: "자격증",
+                        publications: "출판물",
+                        languages: "언어",
+                        interests: "관심사",
+                        references: "추천인",
                     };
                     const sectionTitle =
                         sectionTitleMap[sectionKey] ||
