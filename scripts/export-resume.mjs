@@ -19,17 +19,23 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = join(__dirname, "..");
 
 // .env 파일 로드 (Node 스크립트는 자동 로드 안 함)
+// 순서: .env → .env.development → .env.local (뒤에 로드된 파일이 우선)
 for (const name of [".env", ".env.development", ".env.local"]) {
     const p = join(root, name);
     if (existsSync(p)) {
         const content = readFileSync(p, "utf-8");
-        for (const line of content.split("\n")) {
-            const m = line.match(/^([^#=]+)=(.*)$/);
-            if (m) {
-                const k = m[1].trim();
-                const v = m[2].trim().replace(/^["']|["']$/g, "");
-                process.env[k] = v;
-            }
+        for (const line of content.split(/\r?\n/)) {
+            const trimmed = line.trim();
+            if (!trimmed || trimmed.startsWith("#")) continue;
+            const eq = trimmed.indexOf("=");
+            if (eq === -1) continue;
+            const k = trimmed.slice(0, eq).trim();
+            let v = trimmed
+                .slice(eq + 1)
+                .trim()
+                .replace(/^["']|["']$/g, "");
+            if (v === "") continue; // 빈 값으로 기존 설정 덮어쓰지 않음
+            process.env[k] = v;
         }
     }
 }
