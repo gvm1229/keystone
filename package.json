@@ -6,9 +6,8 @@
         "node": ">=24.13.0"
     },
     "scripts": {
-        "resume:export": "node scripts/export-resume.mjs",
-        "dev": "pnpm run resume:export && astro dev",
-        "build": "pnpm run resume:export && astro build",
+        "dev": "astro dev",
+        "build": "astro build",
         "preview": "astro preview",
         "format": "prettier --write .",
         "format:check": "prettier --check .",
@@ -24,11 +23,6 @@
         "@keystatic/core": "^0.5.48",
         "@supabase/supabase-js": "^2.93.3",
         "astro": "^5.17.1",
-        "jsonresume-theme-basic": "^1.0.3",
-        "jsonresume-theme-elegant": "^1.16.1",
-        "jsonresume-theme-flat": "^0.3.7",
-        "jsonresume-theme-kendall": "^0.2.0",
-        "jsonresume-theme-modern": "^0.0.18",
         "react": "^19.2.4",
         "react-dom": "^19.2.4"
     },
@@ -42,7 +36,6 @@
         "lint-staged": "^16.2.7",
         "prettier": "^3.4.2",
         "prettier-plugin-astro": "^0.14.0",
-        "resume-cli": "^3.1.2",
         "rimraf": "^6.1.2",
         "tailwindcss": "^4.1.18",
         "typescript": "~5.9.3"
