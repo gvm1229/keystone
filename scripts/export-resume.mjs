@@ -55,7 +55,7 @@ try {
     /* ignore */
 }
 
-execSync(`npx --yes resume-cli@3.1.2 export --theme ${theme} "${outputPath}"`, {
+execSync(`pnpm exec resume export --theme ${theme} "${outputPath}"`, {
     cwd: root,
     stdio: "inherit",
 });
