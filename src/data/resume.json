@@ -1,120 +1,108 @@
 {
     "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/master/schema.json",
     "basics": {
-        "name": "John Doe",
-        "label": "Programmer",
+        "name": "홍길동",
+        "label": "소프트웨어 개발자",
         "image": "",
-        "email": "john@gmail.com",
-        "phone": "(912) 555-4321",
-        "url": "https://johndoe.com",
-        "summary": "A summary of John Doe",
+        "email": "hong@example.com",
+        "phone": "010-1234-5678",
+        "url": "https://honggildong.com",
+        "summary": "홍길동의 이력서 요약입니다.",
         "location": {
-            "address": "2712 Broadway St",
-            "postalCode": "CA 94115",
-            "city": "San Francisco",
-            "countryCode": "US",
-            "region": "California"
+            "address": "서울특별시 강남구 테헤란로 123",
+            "postalCode": "06142",
+            "city": "서울",
+            "countryCode": "KR",
+            "region": "서울특별시"
         },
         "profiles": [
             {
-                "network": "Twitter",
-                "username": "john",
-                "url": "https://twitter.com/john"
+                "network": "GitHub",
+                "username": "honggildong",
+                "url": "https://github.com/honggildong"
             }
         ]
     },
     "work": [
         {
-            "name": "Company",
-            "position": "President",
+            "name": "테크 회사",
+            "position": "대표이사",
             "url": "https://company.com",
             "startDate": "2013-01-01",
             "endDate": "2014-01-01",
-            "summary": "Description",
-            "highlights": ["Started the company"]
+            "summary": "회사 설명",
+            "highlights": ["회사를 설립했습니다"]
         }
     ],
-    "volunteer": [
+    "projects": [
         {
-            "organization": "Organization",
-            "position": "Volunteer",
-            "url": "https://organization.com/",
-            "startDate": "2012-01-01",
-            "endDate": "2013-01-01",
-            "summary": "Description",
-            "highlights": ["Awarded 'Volunteer of the Month'"]
+            "name": "프로젝트",
+            "startDate": "2019-01-01",
+            "endDate": "2021-01-01",
+            "description": "프로젝트 설명",
+            "highlights": ["AIHacks 2016에서 수상했습니다"],
+            "url": "https://project.com/"
         }
     ],
     "education": [
         {
-            "institution": "University",
+            "institution": "대학교",
             "url": "https://institution.com/",
-            "area": "Software Development",
-            "studyType": "Bachelor",
+            "area": "소프트웨어 개발",
+            "studyType": "학사",
             "startDate": "2011-01-01",
             "endDate": "2013-01-01",
             "score": "4.0",
-            "courses": ["DB1101 - Basic SQL"]
+            "courses": ["DB1101 - 기초 SQL"]
         }
     ],
     "awards": [
         {
-            "title": "Award",
+            "title": "수상 내역",
             "date": "2014-11-01",
-            "awarder": "Company",
-            "summary": "There is no spoon."
+            "awarder": "회사",
+            "summary": "수상 내용 설명입니다."
         }
     ],
     "certificates": [
         {
-            "name": "Certificate",
+            "name": "자격증",
             "date": "2021-11-07",
-            "issuer": "Company",
+            "issuer": "발급 기관",
             "url": "https://certificate.com"
-        }
-    ],
-    "publications": [
-        {
-            "name": "Publication",
-            "publisher": "Company",
-            "releaseDate": "2014-10-01",
-            "url": "https://publication.com",
-            "summary": "Description"
         }
     ],
     "skills": [
         {
-            "name": "Web Development",
-            "level": "Master",
+            "name": "웹 개발",
+            "level": "전문가",
             "keywords": ["HTML", "CSS", "JavaScript"]
         }
     ],
     "languages": [
         {
-            "language": "English",
-            "fluency": "Native speaker"
+            "language": "한국어",
+            "fluency": "모국어"
+        },
+        {
+            "language": "영어",
+            "fluency": "비즈니스 레벨"
+        },
+        {
+            "language": "일본어어",
+            "fluency": "일상 회화 레벨"
         }
     ],
     "interests": [
         {
-            "name": "Wildlife",
-            "keywords": ["Ferrets", "Unicorns"]
+            "name": "게임",
+            "keywords": ["소울류", "레이싱"]
         }
     ],
     "references": [
         {
-            "name": "Jane Doe",
-            "reference": "Reference"
-        }
-    ],
-    "projects": [
-        {
-            "name": "Project",
-            "startDate": "2019-01-01",
-            "endDate": "2021-01-01",
-            "description": "Description",
-            "highlights": ["Won award at AIHacks 2016"],
-            "url": "https://project.com/"
+            "name": "김철수",
+            "reference": "~~를 잘해서 추천합니다. 구라에요"
         }
     ]
 }
