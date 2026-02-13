@@ -22,11 +22,12 @@ const title = resumeData.basics?.name
     ? `${resumeData.basics.name} - Resume | Keystone`
     : "Resume - Keystone";
 const description = resumeData.basics?.summary ?? "이력서";
+const hasResumeContent = rendered && rendered.body;
 ---
 
 <BaseLayout title={title} description={description}>
     {
-        rendered ? (
+        hasResumeContent ? (
             <div class="resume-page-container">
                 <iframe
                     src="/resume-standalone.html"
